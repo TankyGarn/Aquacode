@@ -18,6 +18,7 @@ sorted_licence = cleaned_licence.set_index(["LOK_NAVN","LOK_NR"]).sort_index()
 sorted_sedimentation = sedimentation.set_index(["navn","loknr"]).sort_index()
 sorted_lice = lice.set_index(["Lokalitetsnavn","Lokalitetsnummer"]).sort_index()
 
+#change time in sedimentation data to week
 
 ###Sending Data to 0_interim
 sorted_licence.to_csv("../data/interim/sorted_licence.csv") 

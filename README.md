@@ -68,6 +68,13 @@ Describe your datasets
 
 
 ## Challenges
+Clean data to same time method.
+    *Change all time to week number.
+
+
+Make a program that gives a plot wich shows the allowed production in different regions / companies
+    subgoals:
+        * 
 
 Make a program that makes it posible to generate a location report that gives a report wich shows plots with relevant data like:
 
