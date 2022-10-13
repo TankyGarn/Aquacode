@@ -57,10 +57,28 @@ Describe your datasets
     TL:DR : File that documents the enviormental surveying close to aquaculturesites.
 
     Dataset 2: 
-    File: Barentswatch
+    File: Fiskeridirektoratet/Akvakulturregisteret.csv
+    Downloaded(link/date):
+    TL;DR: file that documents who owns the different licences on locations
+
+    Dataset 3: 
+    File: Fiskeridirektoratet/Lakselus_per_fisk.csv
+    Downloaded(link/date):
+    TL;DR: file that documents who owns the different licences on locations
+
 
 ## Challenges
-Can be given as a list.
+
+Make a program that makes it posible to generate a location report that gives a report wich shows plots with relevant data like:
+
+    * Owner of Location
+    * map location
+    * Sealice history
+    * MOMB - data (seabed conditions) with timeline
+    * Production capacity
+   
+
+
 
 ## Visualisations
 Your figures and tables, including captions.
