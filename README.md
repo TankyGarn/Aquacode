@@ -16,29 +16,29 @@ Sustainable Goal number 14 - Life Below Water
 
 ## Project overview
 ```
-Template
-│   README.md
-│
-├───data
-│   ├───auxiliary
-│   │   ├───type_one_auxiliary_files
-│   │   └───type_two_auxiliary_files
-│   ├───interim
-│   │   ├───0_interim
-│   │   └───1_interim
-│   ├───processed
-│   └───raw
-│       ├───dataset_provider_1
-│       └───dataset_provider_2
-├───docs
-│   └───references
-├───src
-│       01_clean_data.py
-│       02_combine_data.py
-│
-└───visualisations
+Per 13.10.2022
+
+├── README.md
+├── data
+│   ├── auxiliary
+│   ├── interim
+│   │   ├── sorted_lice.csv
+│   │   ├── sorted_licence.csv
+│   │   └── sorted_sedimentation.csv
+│   └── raw
+│       └── Fiskeridirektoratet
+│           ├── Akvakulturregisteret.csv
+│           ├── Historiske_B-undersøkelser.csv
+│           └── lakselus_per_fisk.csv
+├── docs
+├── src
+│   ├── 01_importdata.py
+│   └── 02_timesorting.py
+└── visualisation
+
+8 directories, 9 files
 ```
-*Made by typing `tree /F` in a Powershell terminal. Should work the same in other terminals too.*
+
 
 ## Introduction
 Introduction to your project. Thoughts behind your research question and why it relates to sustainability.
@@ -58,13 +58,13 @@ Describe your datasets
 
     Dataset 2: 
     File: Fiskeridirektoratet/Akvakulturregisteret.csv
-    Downloaded(link/date):
-    TL;DR: file that documents who owns the different licences on locations
+    Downloaded(link/date):https://www.fiskeridir.no/Akvakultur/Registre-og-skjema/Akvakulturregisteret / 11.10.2022
+    TL;DR: file that documents who owns the different licences on locations.
 
     Dataset 3: 
     File: Fiskeridirektoratet/Lakselus_per_fisk.csv
-    Downloaded(link/date):
-    TL;DR: file that documents who owns the different licences on locations
+    Downloaded(link/date): https://www.barentswatch.no/nedlasting/fishhealth/lice / 11.10.2022
+    TL;DR: file that documents every single salmoncount.
 
 
 ## Challenges
