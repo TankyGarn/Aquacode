@@ -1,0 +1,39 @@
+#Entry 1 / 17.10.2022 / Both
+### Notes meeting between Nikolai and Taohong.
+
+1. Introduction Datasets:
+    Akvakulturregisteret
+    Historiske_B Undersøkelser
+    Lakselus per fisk
+
+2. What do we want to look at?
+
+    * Production areas, comparing data 
+    * Calculation amount of lice on a location
+    * Comparing our results with "traffiklyssystemet"
+    * Plot out results of lice in different locations.
+    * Use map data
+    * Use other factors (wind,wave,current,depth)
+    * See if there is bias in location sedimentaion compared, with depth and current.
+
+
+3. Research question?
+
+We want to compare enviormental impact of locations looking at salmon lice data and sedimentation analysis data. Then we want to compare inbetween different locations, companies and regions, to find out if they could be used as a factor for "trafikklyssystemet".
+
+4. Goals
+
+* Learn to program in pair.
+* Show nice, informative plots.
+
+5.Other
+
+Plan on meeting on monday 13:30.
+
+###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###
+
+
+
+
+
+
