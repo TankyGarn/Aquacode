@@ -8,10 +8,18 @@ licence = pandas.read_csv("../data/raw/Fiskeridirektoratet/Akvakulturregisteret.
 sedimentation = pandas.read_csv("../data/raw/Fiskeridirektoratet/Historiske_B-undersøkelser.csv",sep=";")
 lice  = pandas.read_csv("../data/raw/Fiskeridirektoratet/lakselus_per_fisk.csv",sep=";")
 
+#Cleaning caracters pre sorting
+licence["LOK_KAP"] = licence["LOK_KAP"].str.replace(',','.')
+licence["LOK_KAP"] = licence["LOK_KAP"].str.replace(' ','')
+
+
+
 #*** Sorting ***#
+
 
 # Sort out the licences with salmon (Biomass allowed is noted on the salmon values) we only want salmon and seawater
 cleaned_licence = licence.loc[(licence['ART']=="Laks") & (licence["VANNMILJØ"]=="SALTVANN")]
+
 
 
 # Sort by location name and number
