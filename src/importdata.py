@@ -1,17 +1,22 @@
 from timesorting import fromDateToWeek
 import pandas
 
+#*** Importing ***#
 #importing the csv files from "../data/raw/Fiskeridirektoratet/"
 
-## i had some issues due to other format than the other csv files, made it work using the correct seperator and skipping the first row.
+## i had some issues due to other format than the other csv files,
+## made it work using the correct seperator and skipping the first row.
+
 licence = pandas.read_csv("../data/raw/Fiskeridirektoratet/Akvakulturregisteret.csv", sep=";" , skiprows=[0])
 sedimentation = pandas.read_csv("../data/raw/Fiskeridirektoratet/Historiske_B-undersøkelser.csv",sep=";")
 lice  = pandas.read_csv("../data/raw/Fiskeridirektoratet/lakselus_per_fisk.csv",sep=";")
 
-#Cleaning caracters pre sorting
+
+#Cleaning characters pre sorting
 licence["LOK_KAP"] = licence["LOK_KAP"].str.replace(',','.')
 licence["LOK_KAP"] = licence["LOK_KAP"].str.replace(' ','')
-
+licence["TILL_KAP"] = licence["TILL_KAP"].str.replace(',','.')
+licence["TILL_KAP"] = licence["TILL_KAP"].str.replace(' ','')
 
 
 #*** Sorting ***#
