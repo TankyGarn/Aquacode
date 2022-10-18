@@ -1,16 +1,16 @@
 import pandas as pd
 
-sl = pd.read_csv("../data/interim/sorted_licence.csv")
-
+df_sortedLicence = pd.read_csv("../data/interim/sorted_licence.csv")
+df_sortedLice = pd.read_csv("../data/interim/sorted_lice.csv")
 
 # A function that takes input location ID and ColumbName (Index of collumb of interest)
-def checkupWithID(LocationID,ColumbName):
-    checkup = sl[sl["LOK_NR"]==LocationID]
-    return (checkup[ColumbName][checkup.index[0]])
+def returnColumbData(LocationID,ColumbName,columbIndex):
+    checkup = df_sortedLicence[df_sortedLicence["LOK_NR"]==LocationID]
+    return (checkup[ColumbName][checkup.index[columbIndex]])
 
 
 
-TitleDict= {
+TitleDictOnetimeLicence= {
     "Location_Name" : "LOK_NAVN",
     "Location_Owner" : "NAVN",
     "Municipalty_Name" : "TILL_KOM",
@@ -18,9 +18,19 @@ TitleDict= {
     "MaxBiomassLicence" : "LOK_KAP",
     "ProductionArea": "PROD_OMR",
     "Latitude" : "N_GEOWGS84",
-    "Longitude" : "Ø_GEOWGS84",
+    "Longitude" : "Ø_GEOWGS84"
     
 }
+TitleDictEveryTime={
+    "Instancetype" : "INSTANCETYPE",
+    "Location_Name" :"Lokalitetsnavn",
+    "Adult_Female_Lice" : "Voksne hunnlus",
+    "Other_Mobile_Lice" : "Lus i bevegelige stadier",
+    "Unmobile_Lice" : "Fastsittende lus"
+}
+# Create a list of the 1. element in each of the rows
+# add the datalist together with the new list
+# Create a list of the 2. element in each of the rows.
 
 #Generate The headers of the new dataset (width 12)
 listTitrttles = ["LocationName",
@@ -50,56 +60,20 @@ listTitrttles = ["LocationName",
 
 # Lets begin with the one time to storage data
 
-"""
-#Can we create a *WHAT IS THE NAME OF THE THING I AM THINKING ABOUT* to do this? 
-#(since it is just repetition of data with one swap on every new collumb name)
-def getLocationName(LocationID):
-    #Checkup if there is a location number and return a df with every single location with that id
-    checkup = sl[sl["LOK_NR"]==LocationID]
-    #Return the first Location number in that list.
-    return(checkup["LOK_NAVN"][checkup.index[0]])
-
-def getOwner(LocationID):
-    checkup = sl[sl["NAVN"]==LocationID]
-    return(checkup["NAVN"][checkup.index[0]])
-
-def getLatitude(LocationID):
-    checkup = sl[sl["N_GEOWGS84"]==LocationID]
-    return(checkup["N_GEOWGS84"][checkup.index[0]])
-"""
-
-"""
-LocationName = 
-LocationNumber = 
-Owner = 
-ProductionAreaNumber = 
-Municipality = 
-MaxBiomassLicence =
-MaxBiomassLocation =
-InstanceType = 
-WeekNr =
-Year =
-SedimentationLevel = 
-Licecount = 
-SedimentationAlarmLevel =
-LiceAlarmLevel = 
-IsFish =
-Latitude =
-Longditude =
-URLmom =
-SeaTemperature =
-SealiceLimit =
-"""
 
 # Pseudocode completion 
 dataList = []
 # function that makes a pandas dataframe based on a locationnumber 
+mainList = []
 
-
-def appendDataToList(LocationID):
-    for key in TitleDict:
-        dataList.append(checkupWithID(LocationID,TitleDict[key]))
+def appendOneTimeDataToList(LocationID):
+    for key in TitleDictOnetimeLicence:
+        dataList.append(returnColumbData(LocationID,TitleDictOnetimeLicence[key],0))
     return dataList
     
 
-print(appendDataToList(15196))
+   
+        
+
+
+print(appendOneTimeDataToList(15196))

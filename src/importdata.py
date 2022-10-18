@@ -18,6 +18,10 @@ licence["LOK_KAP"] = licence["LOK_KAP"].str.replace(' ','')
 licence["TILL_KAP"] = licence["TILL_KAP"].str.replace(',','.')
 licence["TILL_KAP"] = licence["TILL_KAP"].str.replace(' ','')
 
+#Add Type Of Data to files
+
+lice['INSTANCETYPE'] = "Lusetelling"
+sedimentation['INSTANCETYPE'] = "sedimentation"
 
 #*** Sorting ***#
 
