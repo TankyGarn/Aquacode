@@ -31,6 +31,12 @@ We want to compare enviormental impact of locations looking at salmon lice data 
 Plan on meeting on monday 13:30.
 
 ###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###*###
+Meeting 2: 
+
+*todo next:
+    send sorted lice to Taohong
+    sort out emty datafile from sorted_lice
+    actually make the great merge datafile.
 
 
 
