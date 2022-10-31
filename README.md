@@ -3,7 +3,7 @@
 ### Tue , 11.10.2022
 
 Nikolai Vesbøstad, nikolv@stud.ntnu.no
-
+Taohong Liao, taohongl@stud.ntnu.no
 
 # Keywords:
 Aquaculture; 
@@ -16,12 +16,14 @@ Sustainable Goal number 14 - Life Below Water
 
 ## Project overview
 ```
-Per 13.10.2022
-
+Per 31.10.2022
+.
 ├── README.md
+├── Worklog.txt
 ├── data
 │   ├── auxiliary
 │   ├── interim
+│   │   ├── combined_raw_licence_lice.csv
 │   │   ├── sorted_lice.csv
 │   │   ├── sorted_licence.csv
 │   │   └── sorted_sedimentation.csv
@@ -33,19 +35,37 @@ Per 13.10.2022
 ├── docs
 ├── src
 │   ├── 01_importdata.py
-│   └── 02_timesorting.py
+│   ├── 03_generate_locationreport.py
+│   ├── __pycache__
+│   │   ├── timesorting.cpython-38.pyc
+│   │   └── timesorting.cpython-39.pyc
+│   ├── structure
+│   │   ├── 00_main.py
+│   │   ├── 01_clean_data.py
+│   │   ├── 02_process_data.py
+│   │   ├── 03_analyse_data.py
+│   │   └── generic_functions.py
+│   ├── test.py
+│   └── timesorting02.py
 └── visualisation
+    ├── Aldalen_Voksne_hunnlus.png
+    ├── Fastsittende_lus.png
+    ├── Lus_i_bevegelige stadier.png
+    ├── Nautvik_Voksne_hunnlus.png
+    ├── Voksne_hunnlus.png
+    └── map.png
 
-8 directories, 9 files
-```
+10 directories, 26 files
 
 
 ## Introduction
-Introduction to your project. Thoughts behind your research question and why it relates to sustainability.
+In this project we are to clean, sort and utalize data coming from the salmonindustry in norway, we have three datasets which cover different aspects of sustainability. Ownership, Site Health and sealice data onsites. 
 
 ### Research question
-> Write your research question here
- 
+> 
+
+
+
 ## Datasets
 Describe your datasets
 * where do they come from?
@@ -90,8 +110,15 @@ Make a program that makes it posible to generate a location report that gives a 
 ## Visualisations
 Your figures and tables, including captions.
 
+[Example of lice production over time.](visualisation/Aldalen_Voksne_hunnlus.png)
+(how do i add images to .md files...)
+
+
+
 ## Conclusion
 The main conclusions of your analysis and how they answer your research question.
 
+Stuff to do before project is done:
+    Clean up hiarchu
 
 See [markdownguide.org](markdownguide.org/basic-syntax) for formatting help.
