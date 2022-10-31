@@ -2,7 +2,7 @@ import pandas as pd
 
 df_sortedLicence = pd.read_csv("../data/interim/sorted_licence.csv")
 df_sortedLice = pd.read_csv("../data/interim/sorted_lice.csv")
-df_sortedLicence.rename(columns = {'LOK_NR':'Loction_Number', 'LOK_NAVN':'Location_Name', 'TILL_NR':'Licence_Id', 'ORG-NR/PERS.NR':'Buisness_Id', 'NAVN':'Buisness_Name', 'Adresse':'Adress', 'POSTNR':'Area_Code', 'POSTSTED':'Area_Name','TILDELINGSPUNKT':'Licence_Startdate', 'LOK_KOMNR':'Municipality_ID','LOK_KOM':'Municipality_Name', 'LOK_KAP':'Municipality_Capacity',    }, inplace = True)
+df_sortedLicence.rename(columns = {'LOK_NR':'Lokalitetsnummer', 'LOK_NAVN':'Location_Name', 'TILL_NR':'Licence_Id', 'ORG-NR/PERS.NR':'Buisness_Id', 'NAVN':'Buisness_Name', 'Adresse':'Adress', 'POSTNR':'Area_Code', 'POSTSTED':'Area_Name','TILDELINGSPUNKT':'Licence_Startdate', 'LOK_KOMNR':'Municipality_ID','LOK_KOM':'Municipality_Name', 'LOK_KAP':'Municipality_Capacity',    }, inplace = True)
 
 # A function that takes input location ID and ColumbName (Index of collumb of interest)
 def returnColumbData(LocationID,ColumbName,columbIndex):
