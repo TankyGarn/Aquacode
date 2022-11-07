@@ -56,6 +56,7 @@ Per 31.10.2022
     └── map.png
 
 10 directories, 26 files
+```
 
 
 ## Introduction
@@ -73,7 +74,7 @@ Describe your datasets
 * what are they used for?
 * * Dataset 1: 
     File: Fiskeridirektoratet/Historiske_B-undersøkelser.csv
-    Downloaded(link/date): https://www.fiskeridir.no/Tall-og-analyse/AApne-data / 11.10.2022
+    Downloaded(link/date): https://open-data-fiskeridirektoratet-fiskeridir.hub.arcgis.com/datasets/702d94e4835041d0a01be603862484b4/explore?location=64.359884%2C17.537900%2C7.09 / 07.10.2022
     TL:DR : File that documents the enviormental surveying close to aquaculturesites.
 
     Dataset 2: 
@@ -98,11 +99,11 @@ Make a program that gives a plot wich shows the allowed production in different 
 
 Make a program that makes it posible to generate a location report that gives a report wich shows plots with relevant data like:
 
-    * Owner of Location
-    * map location
-    * Sealice history
-    * MOMB - data (seabed conditions) with timeline
-    * Production capacity
+* Owner of Location
+* map location
+* Sealice history
+* MOMB - data (seabed conditions) with timeline
+* Production capacity
    
 
 
