@@ -1,50 +1,69 @@
-from timesorting02 import fromDateToWeek
-import pandas
-
 # *** Importing ***#
-# importing the csv files from "../data/raw/Fiskeridirektoratet/"
-
-# i had some issues due to other format than the other csv files,
-# made it work using the correct seperator and skipping the first row.
-
-licence = pandas.read_csv(
-    "../data/raw/Fiskeridirektoratet/Akvakulturregisteret.csv", sep=";", skiprows=[0]
-)
-sedimentation = pandas.read_csv(
-    "../data/raw/Fiskeridirektoratet/Historiske_B-undersøkelser.csv", sep=";"
-)
-lice = pandas.read_csv("../data/raw/Fiskeridirektoratet/lakselus_per_fisk.csv", sep=";")
+# imports from the loadingdata.py
+from distutils.command.clean import clean
+from loadingdata import *
 
 
-# Cleaning characters pre sorting
-licence["LOK_KAP"] = licence["LOK_KAP"].str.replace(",", ".")
-licence["LOK_KAP"] = licence["LOK_KAP"].str.replace(" ", "")
-licence["TILL_KAP"] = licence["TILL_KAP"].str.replace(",", ".")
-licence["TILL_KAP"] = licence["TILL_KAP"].str.replace(" ", "")
+data_path = directory_path / ".." / "data"
+raw_path = data_path / "raw" / "FDIR"
+own_path = data_path / "raw" / "OWN"
+interim_path = data_path / "interim"
+
+
+# Defining the names of the files we want to read, found in raw_path:
+licence_file = "Akvakulturregisteret.csv"
+sedimentation_file = "Historiske_B-undersøkelser.csv"
+lice_file = "lakselus_per_fisk.csv"
+
+# create dataframe from csv file
+# raw data
+licence = pull_data_frame(licence_file, raw_path, True)
+sedimentation = pull_data_frame(sedimentation_file, raw_path)
+lice = pull_data_frame(lice_file, raw_path)
+
+# rename the columns we want to study more
+licence.rename(columns=translation_dict_licence, inplace=True)
+lice.rename(columns=translation_dict_lice, inplace=True)
+sedimentation.rename(columns=translation_dict_sediment, inplace=True)
+
+print(licence.head())
+print(sedimentation.head())
+print(lice.head())
+
+
+# Clean Dataset characters, want to add the option to do change ("char1" with "char2" and only suply file)
+
+clean_dataset_char(licence, ",", ".", "location_capasity")
+clean_dataset_char(licence, " ", "", "location_capasity")
+clean_dataset_char(licence, ",", ".", "TILL_KAP")
+clean_dataset_char(licence, " ", "", "TILL_KAP")
+
 
 # Add Type Of Data to files
 
-lice["INSTANCETYPE"] = "Lusetelling"
-sedimentation["INSTANCETYPE"] = "sedimentation"
+lice["instance_type"] = "Lusetelling"
+sedimentation["instance_type"] = "sedimentation"
 
 # *** Sorting ***#
-
-
 # Sort out the licences with salmon (Biomass allowed is noted on the salmon values) we only want salmon and seawater
-cleaned_licence = licence.loc[
-    (licence["ART"] == "Laks") & (licence["VANNMILJØ"] == "SALTVANN")
+licence = licence.loc[
+    (licence["location_species"] == "Laks") & (licence["VANNMILJØ"] == "SALTVANN")
 ]
 
 
 # Sort by location name and number
-sorted_licence = cleaned_licence.set_index(["LOK_NAVN", "LOK_NR"]).sort_index()
-sorted_sedimentation = sedimentation.set_index(["navn", "loknr"]).sort_index()
-sorted_lice = lice.set_index(["Lokalitetsnavn", "Lokalitetsnummer"]).sort_index()
+licence = licence.set_index(["location_name", "location_number"]).sort_index()
+sedimentation = sedimentation.set_index(["location_name", "location_number"]).sort_index()
+lice = lice.set_index(["location_name", "location_number"]).sort_index()
 
 # change time in sedimentation data to week
-sorted_sedimentation["mu_dato"] = sorted_sedimentation["mu_dato"].apply(fromDateToWeek)
+sedimentation["time"] = sedimentation["time"].apply(fromDateToWeek)
 
-#Sending Data to 0_interim
-sorted_licence.to_csv("../data/interim/sorted_licence.csv")
-sorted_sedimentation.to_csv("../data/interim/sorted_sedimentation.csv")
-sorted_lice.to_csv("../data/interim/sorted_lice.csv")
+print(licence.head())
+print(sedimentation.head())
+print(lice.head())
+
+# Saving data into the interim_path
+push_data_frame("licence.csv", licence, interim_path)
+push_data_frame("sedimentation.csv", sedimentation, interim_path)
+push_data_frame("lice.csv", lice, interim_path)

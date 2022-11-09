@@ -26,3 +26,5 @@ def toWeek(datelist):
 # A funciton to combine the other functions into a single input instead of multiple
 def fromDateToWeek(inputdate):
     return toWeek(datelist(removetime(inputdate)))
+
+    
