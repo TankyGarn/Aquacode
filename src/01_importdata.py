@@ -1,10 +1,10 @@
 # *** Importing ***#
 # imports from the loadingdata.py
-from distutils.command.clean import clean
+
 from loadingdata import *
 
 
-data_path = directory_path / ".." / "data"
+
 raw_path = data_path / "raw" / "FDIR"
 own_path = data_path / "raw" / "OWN"
 interim_path = data_path / "interim"
