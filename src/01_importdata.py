@@ -1,9 +1,9 @@
 # *** Importing ***#
 # imports from the loadingdata.py
+import sys
+from functions_and_parameters import *
 
-from loadingdata import *
-
-
+print(data_path)
 
 raw_path = data_path / "raw" / "FDIR"
 own_path = data_path / "raw" / "OWN"
@@ -50,11 +50,12 @@ licence = licence.loc[
     (licence["location_species"] == "Laks") & (licence["VANNMILJØ"] == "SALTVANN")
 ]
 
-
 # Sort by location name and number
 licence = licence.set_index(["location_name", "location_number"]).sort_index()
 sedimentation = sedimentation.set_index(["location_name", "location_number"]).sort_index()
 lice = lice.set_index(["location_name", "location_number"]).sort_index()
+
+
 
 # change time in sedimentation data to week
 sedimentation["time"] = sedimentation["time"].apply(fromDateToWeek)
