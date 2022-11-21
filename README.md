@@ -63,7 +63,10 @@ Per 31.10.2022
 In this project we are to clean, sort and utalize data coming from the salmonindustry in norway, we have three datasets which cover different aspects of sustainability. Ownership, Site Health and sealice data onsites. 
 
 ### Research question
-> 
+> We want to compare enviormental impact of locations looking at salmon lice data and sedimentation analysis data. Then we want to compare inbetween different locations, companies and regions, to find out if they could be used as a factor for "trafikklyssystemet".
+
+
+
 
 
 

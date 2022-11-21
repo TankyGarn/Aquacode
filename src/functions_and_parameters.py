@@ -5,7 +5,7 @@ import datetime
 
 directory_path = Path(os.getcwd())
 data_path = directory_path / ".." / "data"
-
+visualisation_path = directory_path / ".." / "visualisation"
 def pull_data_frame(name_of_file, folder_path, skiprow=False, seperator = ";"):
     """Takes in a filename and returns a pandas dataframe from the csv file.
 
@@ -149,8 +149,8 @@ translation_dict_licence = {
     "NAVN": "location_owner",
     "LOK_NR": "location_number",
     "LOK_NAVN": "location_name",
-    "LOK_ENHET": "location_capasity",
-    "LOK_KAP": "location_capasity_unit",
+    "LOK_KAP": "location_capasity",
+    "LOK_ENHET": "location_capasity_unit",
     "TILL_KOM": "location_municipality",
     "PRODUKSJONSFORM": "location_purpose",
     "ART": "location_species",

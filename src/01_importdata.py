@@ -31,14 +31,6 @@ print(sedimentation.head())
 print(lice.head())
 
 
-# Clean Dataset characters, want to add the option to do change ("char1" with "char2" and only suply file)
-
-clean_dataset_char(licence, ",", ".", "location_capasity")
-clean_dataset_char(licence, " ", "", "location_capasity")
-clean_dataset_char(licence, ",", ".", "TILL_KAP")
-clean_dataset_char(licence, " ", "", "TILL_KAP")
-
-
 # Add Type Of Data to files
 
 lice["instance_type"] = "Lusetelling"
@@ -55,6 +47,12 @@ licence = licence.set_index(["location_name", "location_number"]).sort_index()
 sedimentation = sedimentation.set_index(["location_name", "location_number"]).sort_index()
 lice = lice.set_index(["location_name", "location_number"]).sort_index()
 
+# Clean Dataset characters, want to add the option to do change ("char1" with "char2" and only suply file)
+
+clean_dataset_char(licence, ",", ".", "location_capasity")
+clean_dataset_char(licence, " ", "", "location_capasity")
+clean_dataset_char(licence, ",", ".", "TILL_KAP")
+clean_dataset_char(licence, " ", "", "TILL_KAP")
 
 
 # change time in sedimentation data to week
