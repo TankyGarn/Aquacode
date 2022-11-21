@@ -13,11 +13,8 @@ import pandas as pd
 import numpy as np
 import geopandas as gpd
 import matplotlib.pyplot as plt
-from functions_and_parameters import data_path, visualisation_path, pull_data_frame, push_data_frame
+from functions_and_parameters import interim_path, data_path, visualisation_path, pull_data_frame, push_data_frame
 
-raw_path = data_path / "raw" / "FDIR"
-own_path = data_path / "raw" / "OWN"
-interim_path = data_path / "interim"
 
 lice_file = "lice.csv"
 #Removing the missing values of the data 'sorted_lice.csv', and save the new data to 'lakslus.csv'

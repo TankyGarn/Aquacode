@@ -3,9 +3,18 @@ from pathlib import Path
 import pandas
 import datetime
 
+
+
+
 directory_path = Path(os.getcwd())
 data_path = directory_path / ".." / "data"
 visualisation_path = directory_path / ".." / "visualisation"
+raw_path = data_path / "raw" / "FDIR"
+own_path = data_path / "raw" / "OWN"
+interim_path = data_path / "interim"
+
+
+
 def pull_data_frame(name_of_file, folder_path, skiprow=False, seperator = ";"):
     """Takes in a filename and returns a pandas dataframe from the csv file.
 
@@ -164,7 +173,7 @@ translation_dict_licence = {
     "NONE": "location_time_year",
     "NONE": "location_time_week",
     "NONE": "time",
-    "NONE": "production_area",
+    "PROD_OMR": "production_area",
     "NONE": "temperature",
 }
 
