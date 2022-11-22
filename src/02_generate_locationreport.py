@@ -37,7 +37,8 @@ df_lice = pull_data_frame(lice_file, interim_path, seperator=",")
 # add location owner:
 df_merged = pd.concat([df_lice,df_licence])
 
-lice_soløya = get_list_of_all_lice_on_location(df_merged, 13291)
+lice_soløya = get_list_of_all_lice_on_location(df_merged, 10029)
+print("tetst")
 time_soløya = create_equal_long_plot(lice_soløya)
 
 plt.plot(time_soløya,lice_soløya)
