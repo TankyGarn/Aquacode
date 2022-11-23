@@ -4,15 +4,17 @@
 # Date: 2022.10.25
 # Updated: 2022.10.31
 # *** File purpose ***#
-""" Aim: 
-* The aim of this file is to pull data from .csv files.
-* Edit the data and remove a couple of the initial problems that comes from the getgo.
-* Change the names of the files that we will use later.
+""" Aim:
+- The aim of this file is to pull data from .csv files.
+- Edit the data and remove a couple of the initial problems that comes from the getgo.
+- Change the names of the files that we will use later.
 """
 
 # *** Importing Packages ***#
-# Due to using same funcitons over multiple files we chose to import dependencies once.
-# We are not sure if this is the way to do it in python, but it is common in C++
+# Due to using same funcitons over multiple files
+# we chose to import dependencies once.
+# We are not sure if this is the way to do it in python,
+# but it is common in C++
 from functions_and_parameters import *
 
 
@@ -48,12 +50,18 @@ lice["instance_type"] = "Lusetelling"
 sedimentation["instance_type"] = "sedimentation"
 
 # Sorting out so we only look at salmon locations with seawater.
-# Sort out the licences with salmon (Biomass allowed is noted on the salmon values) we only want salmon and seawater
-licence = licence.loc[(licence["location_species"] == "Laks") & (licence["VANNMILJØ"] == "SALTVANN")]
+# Sort out the licences with salmon
+# (Biomass allowed is noted on the salmon values)
+# we only want salmon and seawater
+licence = licence.loc[
+    (licence["location_species"] == "Laks") & (licence["VANNMILJØ"] == "SALTVANN")
+]
 
 # Sorting so we get a more prefferable index.
 licence = licence.set_index(["location_name", "location_number"]).sort_index()
-sedimentation = sedimentation.set_index(["location_name", "location_number"]).sort_index()
+sedimentation = sedimentation.set_index(
+    ["location_name", "location_number"]
+).sort_index()
 lice = lice.set_index(["location_name", "location_number"]).sort_index()
 
 # Clean Dataset characters, look at funciton comments to se how.
