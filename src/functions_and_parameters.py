@@ -1,3 +1,10 @@
+# This is the first script for the project.
+# -*- coding: utf-8 -*-
+# Authors: Taohong Liao and Nikolai Vestbøstad
+# Date: 2022.10.25
+# Updated: 2022.10.31
+# *** File purpose ***#
+
 import os
 from pathlib import Path
 import pandas
@@ -7,6 +14,7 @@ import datetime
 
 
 directory_path = Path(os.getcwd())
+
 data_path = directory_path / ".." / "data"
 visualisation_path = directory_path / ".." / "visualisation"
 raw_path = data_path / "raw" / "FDIR"
@@ -96,17 +104,19 @@ def datelist(date):
 
 # Give a list with [year,month,date] returns the weeknumber:  input:  [2022,10,13] return: [41,2022]
 def toWeek(datelist):
-    week = datetime.date(
-        int(datelist[0]), int(datelist[1]), int(datelist[2])
-    ).isocalendar()[1]
-    year = int(datelist[0])
-    year_week = [year, week]
-    return year_week
+    week = datetime.date(int(datelist[0]), int(datelist[1]), int(datelist[2])).isocalendar()[1]
+    return week
 
+def toYear(datelist):
+    year = int(datelist[0])
+    return year
 
 # A funciton to combine the other functions into a single input instead of multiple
 def fromDateToWeek(inputdate):
     return toWeek(datelist(removetime(inputdate)))
+
+def fromDateToYear(inputdate):
+    return toYear(datelist(removetime(inputdate)))
 
     
 # Translate data names into future data.

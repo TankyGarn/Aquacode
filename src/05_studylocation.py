@@ -1,3 +1,21 @@
+# This is the first script for the project.
+# -*- coding: utf-8 -*-
+# Authors: Taohong Liao and Nikolai Vestbøstad
+# Date: 2022.10.25
+# Updated: 2022.10.31
+# *** File purpose ***#
+""" Aim: 
+* The aim of this file is to pull data from .csv files.
+* Edit the data and remove a couple of the initial problems that comes from the getgo.
+* Change the names of the files that we will use later.
+"""
+# *** Importing Packages ***#
+# *** Define parameters ***#
+# *** Defining Functions ***#
+# *** Load Data ***#
+# *** Manipulate the Data *** #
+# *** Save Data *** #
+
 # The goal of this file is to pull licence data, and find out the production tonnage of each company.
 import matplotlib.pyplot as plt
 import numpy as np
@@ -50,12 +68,12 @@ for i in range(len(list_saved_owner_capasity)):
 print(new_list)
 """
 
-def from_dataframe_return_company_and_values(study_dataframe,value_column,mean=False):
+def from_dataframe_return_company_and_values(study_dataframe,study_column,value_column,mean=False):
     new_dataframe = pandas.DataFrame()
     returnable_datafame = pandas.DataFrame()
-    new_dataframe["location_number"] = study_dataframe["location_number"]
+    new_dataframe[study_column] = study_dataframe[study_column]
     new_dataframe[value_column] = study_dataframe[value_column]
-    saved_sum = new_dataframe.groupby("location_number")[value_column].sum()
+    saved_sum = new_dataframe.groupby(study_column)[value_column].sum()
     if mean == True:
         saved_sum =  saved_sum/len(saved_sum)
     else:
@@ -65,9 +83,9 @@ def from_dataframe_return_company_and_values(study_dataframe,value_column,mean=F
     return returnable_datafame
     
 
-licence_dataframe_location_capasity = from_dataframe_return_company_and_values(licence_dataframe,"location_capasity")
-lice_dataframe_female_lice = from_dataframe_return_company_and_values(lice_dataframe, "lice_female_mature",mean=True)
-sedimentation_dataframe_sedimentation_state = from_dataframe_return_company_and_values(sedimentation_dataframe,"location_state",mean=True)
+licence_dataframe_location_capasity = from_dataframe_return_company_and_values(licence_dataframe,"location_number","location_capasity")
+lice_dataframe_female_lice = from_dataframe_return_company_and_values(lice_dataframe,"location_number", "lice_female_mature",mean=True)
+sedimentation_dataframe_sedimentation_state = from_dataframe_return_company_and_values(sedimentation_dataframe,"location_number","location_state",mean=True)
 
 
 
@@ -119,3 +137,34 @@ new_dataframe = new_dataframe.set_index("location_owner")
 new_dataframe = new_dataframe.sort_index()
 
 print(new_dataframe)
+new_dataframe = new_dataframe.reset_index()
+print(new_dataframe)
+
+licence_dataframe_location_capasity = from_dataframe_return_company_and_values(new_dataframe,"location_owner","location_capasity")
+lice_dataframe_female_lice = from_dataframe_return_company_and_values(new_dataframe,"location_owner", "lice_female_mature",mean=True)
+sedimentation_dataframe_sedimentation_state = from_dataframe_return_company_and_values(new_dataframe,"location_owner","location_state",mean=True)
+
+
+newest_dataframe = lice_dataframe_female_lice.merge(licence_dataframe_location_capasity, on="location_owner")
+newest_dataframe = newest_dataframe.merge(sedimentation_dataframe_sedimentation_state, on="location_owner")
+
+print(newest_dataframe)
+
+sizes = np.array([newest_dataframe["location_capasity"]/1000])
+
+x = newest_dataframe["lice_female_mature"].to_list()
+y = newest_dataframe["location_state"].to_list()
+z = newest_dataframe.index.values.tolist()
+
+
+ax = newest_dataframe.plot.scatter(x="lice_female_mature", y="location_state",s = sizes, c=np.random.rand(len(newest_dataframe["location_capasity"]),3) )
+
+# Annotate each data point
+
+for i, txt in enumerate(z):
+    ax.annotate(txt, (x[i], y[i]))
+
+
+print(newest_dataframe.sort_index())
+
+plt.show()

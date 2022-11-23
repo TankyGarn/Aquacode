@@ -1,15 +1,32 @@
+# This is the first script for the project.
+# -*- coding: utf-8 -*-
+# Authors: Taohong Liao and Nikolai Vestbøstad
+# Date: 2022.10.25
+# Updated: 2022.10.31
+# *** File purpose ***#
+""" Aim: 
+* The aim of this file is to pull data from .csv files.
+* Edit the data and remove a couple of the initial problems that comes from the getgo.
+* Change the names of the files that we will use later.
+"""
+# *** Importing Packages ***#
 import pandas as pd
 from functions_and_parameters import *
 import matplotlib.pyplot as plt
-# Paths
-raw_path = data_path / "raw" / "FDIR"
-own_path = data_path / "raw" / "OWN"
-interim_path = data_path / "interim"
 
+# *** Define parameters ***#
 # Parameters
 licence_file = "licence.csv"
 lice_file = "lice.csv"
 sedimentation_file = "sedimentation.csv"
+# *** Defining Functions ***#
+# *** Load Data ***#
+# *** Manipulate the Data *** #
+# *** Save Data *** #
+
+
+
+
 # Functions
 
 
