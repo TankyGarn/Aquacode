@@ -20,6 +20,8 @@ visualisation_path = directory_path / ".." / "visualisation"
 raw_path = data_path / "raw" / "FDIR"
 own_path = data_path / "raw" / "OWN"
 interim_path = data_path / "interim"
+video_path = visualisation_path / "video" / "animation"
+video_read_path = visualisation_path / "video" 
 
 
 
@@ -83,7 +85,12 @@ def clean_dataset_char(chosen_dataframe, char_from, char_to, columb_title=None):
     return chosen_dataframe
 
 
-def makeList (dataframe,index_string):
+def pull_6_columns(dataframe, column1, column2, column3, column4, column5, column6):
+    new_dataframe = dataframe[[column1, column2, column3, column4, column5, column6]]
+    return new_dataframe
+
+
+def makeList(dataframe,index_string):
     new_dataframe = list(dataframe[index_string])
     return new_dataframe    
 
