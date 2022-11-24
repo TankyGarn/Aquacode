@@ -9,8 +9,8 @@ import os
 from pathlib import Path
 import pandas
 import datetime
-
-
+import numpy as np
+import matplotlib.pyplot as plt
 
 
 directory_path = Path(os.getcwd())
@@ -78,16 +78,14 @@ def clean_dataset_char(chosen_dataframe, char_from, char_to, columb_title=None):
         pandas.core.frame.DataFrame: The dataframe with edited columns.
     """
 
-    chosen_dataframe[columb_title] = chosen_dataframe[columb_title].str.replace(
-        char_from, char_to
-    )
+    chosen_dataframe[columb_title] = chosen_dataframe[columb_title].str.replace(char_from, char_to)
     # print(f"the dataframes columb with the name ''{columb_title}'' has had it characters swapped from ''{char_from}'', to ''{char_to}''")
     return chosen_dataframe
 
+
 def makeList (dataframe,index_string):
     new_dataframe = list(dataframe[index_string])
-    return new_dataframe
-    
+    return new_dataframe    
 
 
 # Take away the time of day; input: "2007/09/18 + time", output: "2007/09/18"
@@ -107,13 +105,16 @@ def toWeek(datelist):
     week = datetime.date(int(datelist[0]), int(datelist[1]), int(datelist[2])).isocalendar()[1]
     return week
 
+
 def toYear(datelist):
     year = int(datelist[0])
     return year
 
+
 # A funciton to combine the other functions into a single input instead of multiple
 def fromDateToWeek(inputdate):
     return toWeek(datelist(removetime(inputdate)))
+
 
 def fromDateToYear(inputdate):
     return toYear(datelist(removetime(inputdate)))
