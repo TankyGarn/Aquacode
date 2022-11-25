@@ -1,0 +1,30 @@
+#This is the main script for the project TEP4221
+# -*- coding: utf-8 -*-
+# Authors: Taohong Liao and Nikolai Vestbøstad
+# Date: 2022.10.25
+# Updated: 2022.10.31
+# *** File purpose ***#
+"""Aim:
+The goal for this file is to run all the other files.
+"""
+import os
+
+ls_in_cwd = os.listdir()
+ls_in_cwd.sort()
+print(ls_in_cwd)
+
+
+for i in range(len(ls_in_cwd)):
+    print(f"Program:{i}/{len(ls_in_cwd)}")
+    if ls_in_cwd[i].endswith(".py"):
+        os.system(f"python {ls_in_cwd[i]}")
+        
+
+#for i in range(len(ls_in_cwd)):
+   #os.system(f"python {ls_in_cwd[i]}")
+# *** Importing Packages ***#
+# *** Define parameters ***#
+# *** Defining Functions ***#
+# *** Load Data ***#
+# *** Manipulate the Data *** #
+# *** Save Data *** #quit()
