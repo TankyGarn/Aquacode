@@ -4,8 +4,10 @@
 # Date: 2022.10.25
 # Updated: 2022.10.31
 # *** File purpose ***#
-""" Aim: Clean the data of 'sorted_lice' and 
-'salmon_licence', combine the two dataframes"""
+""" 
+Aim: Clean the data of 'sorted_lice' and 
+'salmon_licence', combine the two dataframes
+"""
 # *** Importing Packages ***#
 import pandas as pd
 import numpy as np

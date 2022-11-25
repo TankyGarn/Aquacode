@@ -6,6 +6,13 @@
 # *** File purpose ***#
 """Aim:
 The goal for this file is to run all the other files.
+
+How achived:
+Made a loop that runs through the src file and runs all .py files
+
+What to improve:
+It kinda works.
+It's got some cleaning that needs to be done.
 """
 import os
 
@@ -18,13 +25,11 @@ for i in range(len(ls_in_cwd)):
     print(f"Program:{i}/{len(ls_in_cwd)}")
     if ls_in_cwd[i].endswith(".py"):
         os.system(f"python {ls_in_cwd[i]}")
-        
 
-#for i in range(len(ls_in_cwd)):
-   #os.system(f"python {ls_in_cwd[i]}")
+
 # *** Importing Packages ***#
 # *** Define parameters ***#
 # *** Defining Functions ***#
 # *** Load Data ***#
 # *** Manipulate the Data *** #
-# *** Save Data *** #quit()
+# *** Save Data *** 

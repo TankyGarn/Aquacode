@@ -1,6 +1,6 @@
 #This is the main script for the project TEP4221
 # -*- coding: utf-8 -*-
-# Authors: Taohong Liao and Nikolai Vestbøstad
+# Authors: Taohong Liao
 # Date: 2022.10.25
 # Updated: 2022.10.31
 # *** File purpose ***#
@@ -22,7 +22,7 @@ import pandas as pd
 import numpy as np
 import geopandas as gpd
 import matplotlib.pyplot as plt
-from functions_and_parameters import interim_path, data_path, visualisation_path, pull_data_frame, push_data_frame
+from functions_and_parameters import interim_path, visualisation_path, pull_data_frame
 
 
 lice_file = "lice.csv"
@@ -37,7 +37,13 @@ lakslus_cleaned = lakslus_original.dropna()  # remove the missing value
 
 
 # investigation per region
-lakslus_region_mean = lakslus_cleaned.groupby('location_name')["location_number", "lice_female_mature", "lice_movables", "location_longditude", "location_lattitude"].mean()
+lakslus_region_mean = lakslus_cleaned.groupby('location_name')[
+    "location_number",
+    "lice_female_mature",
+    "lice_movables",
+    "location_longditude",
+    "location_lattitude"].mean()
+
 # simple desriptive statistics
 lakslus_region_mean.mean()
 lakslus_region_mean.std()
@@ -46,7 +52,8 @@ print(lakslus_region_mean)
 
 # compare the histogram NO IDEA WHAT THIS HISTOGRAM SHOWS
 f1 = plt.figure()
-lakslus_region_mean['lice_female_mature'].hist(bins = 200, color='b')  # choose the bins number to make a good graph
+lakslus_region_mean['lice_female_mature'].hist(bins = 200, color='b')  
+# choose the bins number to make a good graph
 plt.xlabel('Lice number per fish')
 plt.ylabel('Location number')
 plt.title('The histogram of adult female lice')
