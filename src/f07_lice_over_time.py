@@ -30,11 +30,13 @@ Steps:
 
 # *** Importing Packages ***#  
 from functions_and_parameters import pull_data_frame, push_data_frame, pull_6_columns, interim_path, plt , np, video_read_path, os
-import folium
+import geopandas as gpd
 
 # *** Define parameters ***#
 lice_file = "lice.csv"
-
+world_data = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+norge =  world_data[world_data.name == "Norway"]
+print(norge)
 
 # *** Defining Functions ***#
 # generates a dataframe with all the accounts that happend at a given time
@@ -46,7 +48,8 @@ def generate_map(dataframe, year, week, index):
     time_dataframe = generate_time_dataframe(dataframe, year, week)
     sizes = np.array([time_dataframe["lice_female_mature"]*50])
     colors =np.array([time_dataframe["lice_female_mature"]])
-    ax = time_dataframe.plot.scatter(x="location_longditude", y="location_lattitude", cmap="Dark2", c=colors, s = sizes)
+    axis=norge.plot()
+    ax = time_dataframe.plot.scatter(x="location_longditude", y="location_lattitude", cmap="Dark2", c=colors, s = sizes, ax = axis)
     ax.set_title(f"Lice situation in week {week} in {year}")
     ax.x_label = "Longditude"
     ax.y_label = "Lattitude"
@@ -64,7 +67,7 @@ def generate_pictures_for_animation():
     for i in range (2012, 2023):
         for j in range (1, 53):
             generate_map(new_lice_dataframe, i, j, index)
-            print("(year/month/index) ", i ,"/", j ,"/", index ," done")
+            print("f07_lice_over_time frames generator : (year/month/index) ", i ,"/", j ,"/", index ," done")
             index = index + 1
 
 # *** Load Data *** #
@@ -81,8 +84,9 @@ new_lice_dataframe = pull_6_columns(
     "location_lattitude",
     "location_longditude")
 
-map1 = folium.Map(location=[60.4720, 8.4689], zoom_start=6)
 new_lice_dataframe = new_lice_dataframe.sort_values(by=["location_time_year", "location_time_week"])
 
-# *** Save Data *** #
 generate_pictures_for_animation()
+
+# *** Save Data *** #
+push_data_frame("reduced_lice_dataframe.csv", new_lice_dataframe, interim_path) 

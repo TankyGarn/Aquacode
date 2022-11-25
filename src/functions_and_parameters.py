@@ -22,6 +22,7 @@ own_path = data_path / "raw" / "OWN"
 interim_path = data_path / "interim"
 video_path = visualisation_path / "video" / "animation"
 video_read_path = visualisation_path / "video" 
+lice_reports_path = visualisation_path / "lice" / "picture"
 
 
 

@@ -8,6 +8,8 @@
 - The aim of this file is to pull data from .csv files.
 - Edit the data and remove a couple of the initial problems that comes from the getgo.
 - Change the names of the files that we will use later.
+
+Note: probable to much commenting...
 """
 
 # *** Importing Packages ***#

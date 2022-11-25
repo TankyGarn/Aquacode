@@ -73,7 +73,7 @@ def from_dataframe_return_company_and_values(study_dataframe,study_column,value_
     return returnable_dataframe
 
 
-def get_owner(location_number):
+def get_owner(location_number,dataframe):
     """
     LOCAL: Takes in a location_number and returns the owner of that location
     Note: This function is only for the local use of the project.
@@ -85,8 +85,8 @@ def get_owner(location_number):
     Returns:
         str: returns the name of the owner of the location.
     """
-    location_df = licence_dataframe.loc[
-        licence_dataframe["location_number"] == location_number
+    location_df = dataframe.loc[
+        dataframe["location_number"] == location_number
     ]
     owner = location_df["location_owner"].to_list()
     return owner[0]
@@ -111,7 +111,7 @@ def get_owner_columb(dataframe_with_no_owner):
     dataframe_with_owner_column = dataframe_with_no_owner
 
     for location_number in location_number_list:
-        owner_list.append(get_owner(location_number))
+        owner_list.append(get_owner(location_number,licence_dataframe))
 
     #appends the owner_list to the dataframe.
     dataframe_with_owner_column["location_owner"] = owner_list
