@@ -19,7 +19,7 @@ related to order in video, some dates are jumping around.
 # *** Importing Packages ***#
 
 
-from functions_and_parameters import video_read_path, os
+from functions_and_parameters import video_read_path, visualisation_path, os
 import cv2
 
 # *** Define parameters ***#
@@ -41,7 +41,7 @@ for i in os.listdir(image_folder):
         images.append(i)
 images.sort()
 
-
+os.chdir(visualisation_path)
 video = cv2.VideoWriter(video_name, cv2.VideoWriter_fourcc(*'XVID'), FPS, (w,h))
 
 for i in range(len(images)):
@@ -54,5 +54,6 @@ for i in range(len(images)):
 
 
 # *** Save Data *** #
+
 video.release()
 print("video done")

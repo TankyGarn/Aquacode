@@ -41,10 +41,10 @@ def pull_data_frame(name_of_file, folder_path, skiprow=False, seperator = ";"):
         new_dataframe = pandas.read_csv(
             folder_path / name_of_file, sep= seperator, skiprows=[0]
         )
-        print("skiprow = True")
     else:
         new_dataframe = pandas.read_csv(folder_path / name_of_file, sep = seperator)
-        print("Skiprow = False")
+
+    print(f"Pulling the dataframe {name_of_file} from {folder_path}")
     return new_dataframe
 
 
@@ -82,7 +82,7 @@ def clean_dataset_char(chosen_dataframe, char_from, char_to, columb_title=None):
     """
 
     chosen_dataframe[columb_title] = chosen_dataframe[columb_title].str.replace(char_from, char_to)
-    # print(f"the dataframes columb with the name ''{columb_title}'' has had it characters swapped from ''{char_from}'', to ''{char_to}''")
+    print(f"the dataframes columb with the name ''{columb_title}'' has had it characters swapped from ''{char_from}'', to ''{char_to}''")
     return chosen_dataframe
 
 
