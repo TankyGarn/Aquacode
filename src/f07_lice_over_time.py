@@ -43,6 +43,15 @@ print(norge)
 def generate_time_dataframe(dataframe, year, week):
     return dataframe[(dataframe["location_time_year"] == year) & (dataframe["location_time_week"] == week)]
 
+def normalize_with_x_numbers(number):
+    #some problems with sorting requires the same numbers of nubmers...
+    if number < 10:
+        number = f"00{number}"
+    elif number < 100:
+        number = f"0{number}"
+    else:
+        number = number
+    return number
 
 def generate_map(dataframe, year, week, index):
     time_dataframe = generate_time_dataframe(dataframe, year, week)
@@ -50,7 +59,7 @@ def generate_map(dataframe, year, week, index):
     colors =np.array([time_dataframe["lice_female_mature"]])
     axis=norge.plot()
     ax = time_dataframe.plot.scatter(x="location_longditude", y="location_lattitude", cmap="Dark2", c=colors, s = sizes, ax = axis)
-    ax.set_title(f"Lice situation in week {week} in {year}")
+    ax.set_title(f"Lice situation in week {normalize_with_x_numbers(week)} in {year}")
     ax.x_label = "Longditude"
     ax.y_label = "Lattitude"
     ax.xticks = np.arange(4, 31, 1)
@@ -58,7 +67,7 @@ def generate_map(dataframe, year, week, index):
     ax.set_xlim(1, 34)
     ax.set_ylim(54, 75)
     os.chdir(video_read_path)
-    ax.figure.savefig(f"{index}lice_situation_{week}_{year}.png", dpi=300)
+    ax.figure.savefig(f"{normalize_with_x_numbers(index)}_{year}_{normalize_with_x_numbers(week)}_licesituation.png", dpi=300)
 
 
 # makes a plot that shows the locations and the lice situation for a given time
@@ -67,7 +76,7 @@ def generate_pictures_for_animation():
     for i in range (2012, 2023):
         for j in range (1, 53):
             generate_map(new_lice_dataframe, i, j, index)
-            print("f07_lice_over_time frames generator : (year/month/index) ", i ,"/", j ,"/", index ," done")
+            print("f07_lice_over_time frames generator : (year/month/index) ", i ,"/", str(normalize_with_x_numbers(j)) ,"/", str(normalize_with_x_numbers(index)) ," done")
             index = index + 1
 
 # *** Load Data *** #
