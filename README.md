@@ -19,54 +19,42 @@ Sustainable Goal number 14 - Life Below Water
 Per 31.10.2022
 .
 ├── README.md
+├── Worklog.txt
 ├── data
 │   ├── auxiliary
 │   ├── interim
-│   │   ├── df_lice_and_licence.csv
-│   │   ├── lice.csv
-│   │   ├── lice_location_state_owner_dataframe.csv
-│   │   ├── lice_location_state_owner_dataframe.py
-│   │   ├── licence.csv
-│   │   ├── reduced_lice_dataframe.csv
-│   │   ├── sedimentation.csv
-│   │   └── test.csv
+│   │   ├── combined_raw_licence_lice.csv
+│   │   ├── sorted_lice.csv
+│   │   ├── sorted_licence.csv
+│   │   └── sorted_sedimentation.csv
 │   └── raw
-│       ├── FDIR
-│       │   ├── Akvakulturregisteret.csv
-│       │   ├── Historiske_B-undersøkelser.csv
-│       │   └── lakselus_per_fisk.csv
-│       └── OWN
+│       └── Fiskeridirektoratet
+│           ├── Akvakulturregisteret.csv
+│           ├── Historiske_B-undersøkelser.csv
+│           └── lakselus_per_fisk.csv
 ├── docs
-│   ├── Worklog.txt
-│   └── requirements.txt
-├── requirements.txt
 ├── src
+│   ├── 01_importdata.py
+│   ├── 03_generate_locationreport.py
 │   ├── __pycache__
-│   │   ├── f04_process_data.cpython-311.pyc
-│   │   ├── f04_process_data.cpython-38.pyc
-│   │   ├── f04_process_data.cpython-39.pyc
-│   │   ├── functions_and_parameters.cpython-311.pyc
-│   │   ├── functions_and_parameters.cpython-38.pyc
-│   │   ├── functions_and_parameters.cpython-39.pyc
-│   │   ├── loadingdata.cpython-38.pyc
-│   │   ├── loadingdata.cpython-39.pyc
-│   │   ├── timesorting02.cpython-38.pyc
-│   │   └── timesorting02.cpython-39.pyc
-│   ├── f00_mainfile
-│   ├── f01_importdata.py
-│   ├── f02_generate_locationreport.py
-│   ├── f03_clean_data.py
-│   ├── f04_process_data.py
-│   ├── f05_studylocation.py
-│   ├── f06_main.py
-│   ├── f07_lice_over_time.py
-│   ├── f08_video_generator.py
-│   ├── functions_and_parameters.py
-│   ├── generic_functions.py
-│   ├── projecttep_envionment.yml
-│   └── test.py
+│   │   ├── timesorting.cpython-38.pyc
+│   │   └── timesorting.cpython-39.pyc
+│   ├── structure
+│   │   ├── 00_main.py
+│   │   ├── 01_clean_data.py
+│   │   ├── 02_process_data.py
+│   │   ├── 03_analyse_data.py
+│   │   └── generic_functions.py
+│   ├── test.py
+│   └── timesorting02.py
 └── visualisation
-    └── video
+    ├── Aldalen_Voksne_hunnlus.png
+    ├── Fastsittende_lus.png
+    ├── Lus_i_bevegelige stadier.png
+    ├── Nautvik_Voksne_hunnlus.png
+    ├── Voksne_hunnlus.png
+    └── map.png
+
 10 directories, 26 files
 ```
 
@@ -98,20 +86,17 @@ Describe your datasets
     File: Fiskeridirektoratet/Historiske_B-undersøkelser.csv
     Downloaded(link/date): https://open-data-fiskeridirektoratet-fiskeridir.hub.arcgis.com/datasets/702d94e4835041d0a01be603862484b4/explore?location=64.359884%2C17.537900%2C7.09 / 07.10.2022
     TL:DR : File that documents the enviormental surveying close to aquaculturesites.
-    How to download:/last ned/csv/Nedlastningsalternativer/Generer ny nedlastning med de nyeste dataene.
-    
 
     Dataset 2: 
     File: Fiskeridirektoratet/Akvakulturregisteret.csv
     Downloaded(link/date):https://www.fiskeridir.no/Akvakultur/Registre-og-skjema/Akvakulturregisteret / 11.10.2022
     TL;DR: file that documents who owns the different licences on locations.
-    How to download: scroll down, find "Akvakulturregisteret i nedlastbare filer.", then click the one with .csv.
 
     Dataset 3: 
     File: Fiskeridirektoratet/Lakselus_per_fisk.csv
     Downloaded(link/date): https://www.barentswatch.no/nedlasting/fishhealth/lice / 11.10.2022
     TL;DR: file that documents every single salmoncount.
-    How to download:click "Alle lokaliteter med laksefisk", time from 1/2012 til today, chose format csv.
+
 
 ## Challenges
 Clean data to same time method.

@@ -31,20 +31,17 @@ FPS = 14
 
 image_folder = video_read_path
 full_out_path = image_folder / "video"
-video_name = "lice_norway.mp4"
+video_name = "aaa.mp4"
 # *** Defining Functions ***#
 
 os.chdir(image_folder)
 images = []
-
 for i in os.listdir(image_folder):
     if i.endswith(".png"):
         images.append(i)
-print(images)
 images.sort()
-print(images)
 
-
+os.chdir(visualisation_path)
 video = cv2.VideoWriter(video_name, cv2.VideoWriter_fourcc(*'XVID'), FPS, (w,h))
 
 for i in range(len(images)):
@@ -55,7 +52,7 @@ for i in range(len(images)):
 
 
 
-os.system("pwd")
+
 # *** Save Data *** #
 
 video.release()
