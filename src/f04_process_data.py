@@ -30,8 +30,9 @@ licence_file = "licence.csv"
 sedimentation_file = "sedimentation.csv"
 lice_file = "lice.csv"
 
+
 # *** Defining Functions ***#
-def from_dataframe_return_company_and_values(study_dataframe,study_column,value_column,mean=False):
+def from_dataframe_return_company_and_values(study_dataframe, study_column, value_column, mean=False):
     """Pull two columns from a dataframe and returns
     a dataframe with a indexcolumn (study_column),
     wich should be a parent hierarchially to the value_column.
@@ -61,8 +62,8 @@ def from_dataframe_return_company_and_values(study_dataframe,study_column,value_
     saved_sum = new_dataframe.groupby(study_column)[value_column].sum()
 
     # if mean == True, the value will be the mean of all the values for the index.
-    if mean == True:
-        saved_sum =  saved_sum/len(saved_sum)
+    if mean:
+        saved_sum = saved_sum/len(saved_sum)
     else:
         saved_sum = saved_sum
 
@@ -73,7 +74,7 @@ def from_dataframe_return_company_and_values(study_dataframe,study_column,value_
     return returnable_dataframe
 
 
-def get_owner(location_number,dataframe):
+def get_owner(location_number, dataframe):
     """
     LOCAL: Takes in a location_number and returns the owner of that location
     Note: This function is only for the local use of the project.
@@ -91,6 +92,7 @@ def get_owner(location_number,dataframe):
     owner = location_df["location_owner"].to_list()
     return owner[0]
 
+
 def get_owner_columb(dataframe_with_no_owner):
     """
     LOCAL:Takes in a dataframe with no owner columb 
@@ -103,20 +105,20 @@ def get_owner_columb(dataframe_with_no_owner):
     Returns:
         dataframe: dataframe with a owner columb.
     """
-    #make emty list.
+    # make emty list.
     owner_list = []
 
-    #not sure why this works but it does.
-    location_number_list = list(dataframe_with_no_owner.index.values)
+    # not sure why this works but it does.
+    location_number_list = list(dataframe_with_no_owner. index.values)
     dataframe_with_owner_column = dataframe_with_no_owner
 
     for location_number in location_number_list:
-        owner_list.append(get_owner(location_number,licence_dataframe))
+        owner_list.append(get_owner(location_number, licence_dataframe))
 
-    #appends the owner_list to the dataframe.
+    # appends the owner_list to the dataframe.
     dataframe_with_owner_column["location_owner"] = owner_list
 
-    #returns the dataframe.
+    # returns the dataframe.
     return dataframe_with_owner_column
 
 
@@ -146,6 +148,5 @@ lice_location_state_owner_dataframe = lice_location_state_owner_dataframe.merge(
 # adding the owner column to the dataframe (This should be done in a better way)
 lice_location_state_owner_dataframe = get_owner_columb(lice_location_state_owner_dataframe)
 
-
 # *** Save Data *** #
-push_data_frame("lice_location_state_owner_dataframe.csv",lice_location_state_owner_dataframe,interim_path)
+push_data_frame("lice_location_state_owner_dataframe.csv", lice_location_state_owner_dataframe, interim_path)

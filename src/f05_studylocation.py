@@ -35,8 +35,8 @@ licence_file = "licence.csv"
 sedimentation_file = "sedimentation.csv"
 lice_file = "lice.csv"
 
-# *** Defining Functions ***#
 
+# *** Defining Functions ***#
 def index_of_location(location_number):
     index_for_the_location = list_of_locationnumbers.index(location_number)
     return index_for_the_location
@@ -101,11 +101,6 @@ ax = newest_dataframe.plot.scatter(
 # 5. It adds the company names to the plot
 for i, txt in enumerate(z):
     ax.annotate(txt, (x[i], y[i]))
-
-
-
-
-
 
 print(newest_dataframe.sort_index())
 
