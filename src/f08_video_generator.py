@@ -41,7 +41,7 @@ for i in os.listdir(image_folder):
         images.append(i)
 images.sort()
 
-os.chdir(visualisation_path)
+
 video = cv2.VideoWriter(video_name, cv2.VideoWriter_fourcc(*'XVID'), FPS, (w,h))
 
 for i in range(len(images)):

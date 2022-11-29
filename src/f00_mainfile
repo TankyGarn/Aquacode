@@ -23,16 +23,14 @@ ls_in_cwd = os.listdir()
 ls_in_cwd.sort()
 print(ls_in_cwd)
 
-# *** Load Data ***#
+
 for i in range(len(ls_in_cwd)):
     print(f"Program:{i}/{len(ls_in_cwd)}")
     if ls_in_cwd[i].endswith(".py"):
         os.system(f"python {ls_in_cwd[i]}")
 
-print("All files have been run, all files have been generated")
-print("** Highlights: ")
-print("** @visualistation/video/aaa.mp4 ")
-print("** @visualistation/video/aaa.mp4 ")
 
 
-
+# *** Load Data ***#
+# *** Manipulate the Data *** #
+# *** Save Data *** 
