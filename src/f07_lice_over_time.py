@@ -7,6 +7,7 @@
 """ 
 Aim: The goal with this file is to generate a map animation that shows the
 lice situation over time. This map will be generated for all locations.
+And will be saved as a png
 
 How achived:
     What datapoints are needed?
@@ -54,6 +55,14 @@ def normalize_with_x_numbers(number):
     return number
 
 def generate_map(dataframe, year, week, index):
+    """Generates Map plot
+
+    Args:
+        dataframe (dataframe): pandas dataframe
+        year (int): the year you want to generate the map for
+        week (int): the week you want to generate the map foor
+        index (int): just a number that makes it easier to sort.
+    """
     time_dataframe = generate_time_dataframe(dataframe, year, week)
     sizes = np.array([time_dataframe["lice_female_mature"]*50])
     colors =np.array([time_dataframe["lice_female_mature"]])
@@ -72,6 +81,8 @@ def generate_map(dataframe, year, week, index):
 
 # makes a plot that shows the locations and the lice situation for a given time
 def generate_pictures_for_animation():
+    """This funciton is just a simple way to iterate through a locaiton
+    """
     index = 0
     for i in range (2012, 2023):
         for j in range (1, 53):

@@ -7,7 +7,7 @@
 """
 Aim:
 The aim for this file is to be able to make a location report that
-creates a plot of lice over the history of the location.
+shows a plot of lice over the history of the location.
 
 How achived:
 *Write functions that make it posible to generate alot of reports, per location.

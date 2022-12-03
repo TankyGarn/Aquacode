@@ -104,4 +104,6 @@ for i, txt in enumerate(z):
 
 print(newest_dataframe.sort_index())
 
+os.chdir(visualisation_path)
+plt.savefig("company_plots_sedimentaion_sealice")
 plt.show()
